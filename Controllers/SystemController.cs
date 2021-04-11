@@ -13,5 +13,10 @@ namespace JYMES.Controllers
         {
             return View();
         }
+        //-----登录------//
+        public ActionResult Login()
+        {
+            return View();
+        }
     }
 }
