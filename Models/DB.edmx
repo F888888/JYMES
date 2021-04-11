@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="JYMESModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="T_Department">
+          <Key>
+            <PropertyRef Name="F_D_Bm" />
+          </Key>
+          <Property Name="F_D_Bm" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="F_D_Name" Type="varchar" MaxLength="20" />
+          <Property Name="F_D_Parent" Type="varchar" MaxLength="20" />
+          <Property Name="F_D_Description" Type="varchar" MaxLength="50" />
+          <Property Name="F_D_Enabled" Type="bit" />
+          <Property Name="F_D_CreatedBy" Type="varchar" MaxLength="20" />
+          <Property Name="F_D_CreatedTime" Type="datetime" />
+          <Property Name="F_D_ModifiedBy" Type="varchar" MaxLength="20" />
+          <Property Name="F_D_ModifiedTime" Type="datetime" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6013: 表/视图“JYMES.dbo.T_Menu”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+        <EntityType Name="T_Menu">
+          <Property Name="F_M_Bm" Type="varchar" MaxLength="20" />
+          <Property Name="F_M_Name" Type="varchar" MaxLength="20" />
+          <Property Name="F_M_Parent" Type="varchar" MaxLength="20" />
+          <Property Name="F_M_Level" Type="int" />
+          <Property Name="F_M_Type" Type="varchar" MaxLength="20" />
+          <Property Name="F_M_Sort" Type="varchar" MaxLength="20" />
+          <Property Name="F_M_Link" Type="varchar" MaxLength="100" />
+          <Property Name="F_M_Target" Type="varchar" MaxLength="50" />
+          <Property Name="F_M_Description" Type="varchar" MaxLength="100" />
+          <Property Name="F_M_Enabled" Type="bit" />
+          <Property Name="F_M_CreatedBy" Type="varchar" MaxLength="10" />
+          <Property Name="F_M_CreatedTime" Type="datetime" />
+          <Property Name="F_M_ModifiedBy" Type="varchar" MaxLength="20" />
+        </EntityType>-->
+        <EntityType Name="T_Role">
+          <Key>
+            <PropertyRef Name="F_R_Bm" />
+          </Key>
+          <Property Name="F_R_Bm" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="F_R_Name" Type="varchar" MaxLength="20" />
+          <Property Name="F_D_Bm" Type="varchar" MaxLength="20" />
+          <Property Name="F_R_Description" Type="varchar" MaxLength="50" />
+          <Property Name="F_R_CreatedBy" Type="varchar" MaxLength="20" />
+          <Property Name="F_R_CreatedTime" Type="datetime" />
+          <Property Name="F_R_ModifiedBy" Type="varchar" MaxLength="20" />
+          <Property Name="F_R_ModifiedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="T_User">
+          <Key>
+            <PropertyRef Name="F_U_Bm" />
+          </Key>
+          <Property Name="F_U_Bm" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="F_U_Name" Type="varchar" MaxLength="10" />
+          <Property Name="F_U_Short" Type="varchar" MaxLength="10" />
+          <Property Name="F_D_Bm" Type="varchar" MaxLength="20" />
+          <Property Name="F_U_Sex" Type="bit" />
+          <Property Name="F_U_Birthday" Type="datetime" />
+          <Property Name="F_U_Education" Type="varchar" MaxLength="20" />
+          <Property Name="F_U_Role" Type="varchar" MaxLength="20" />
+          <Property Name="F_U_Type" Type="varchar" MaxLength="20" />
+          <Property Name="F_U_Intime" Type="datetime" />
+          <Property Name="F_U_Outtime" Type="datetime" />
+          <Property Name="F_U_Enabled" Type="bit" />
+          <Property Name="F_U_Password" Type="varchar" MaxLength="20" />
+          <Property Name="F_U_CreatedBy" Type="varchar" MaxLength="20" />
+          <Property Name="F_U_CreatedTime" Type="datetime" />
+          <Property Name="F_U_ModifiedBy" Type="varchar" MaxLength="20" />
+          <Property Name="F_U_ModifiedTime" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="JYMESModelStoreContainer">
+          <EntitySet Name="T_Department" EntityType="Self.T_Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Role" EntityType="Self.T_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_User" EntityType="Self.T_User" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="JYMESModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="T_Department">
+          <Key>
+            <PropertyRef Name="F_D_Bm" />
+          </Key>
+          <Property Name="F_D_Bm" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="F_D_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="F_D_Parent" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="F_D_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_D_Enabled" Type="Boolean" />
+          <Property Name="F_D_CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="F_D_CreatedTime" Type="DateTime" Precision="3" />
+          <Property Name="F_D_ModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="F_D_ModifiedTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="T_Role">
+          <Key>
+            <PropertyRef Name="F_R_Bm" />
+          </Key>
+          <Property Name="F_R_Bm" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="F_R_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="F_D_Bm" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="F_R_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="F_R_CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="F_R_CreatedTime" Type="DateTime" Precision="3" />
+          <Property Name="F_R_ModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="F_R_ModifiedTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="T_User">
+          <Key>
+            <PropertyRef Name="F_U_Bm" />
+          </Key>
+          <Property Name="F_U_Bm" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="F_U_Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="F_U_Short" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="F_D_Bm" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="F_U_Sex" Type="Boolean" />
+          <Property Name="F_U_Birthday" Type="DateTime" Precision="3" />
+          <Property Name="F_U_Education" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="F_U_Role" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="F_U_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="F_U_Intime" Type="DateTime" Precision="3" />
+          <Property Name="F_U_Outtime" Type="DateTime" Precision="3" />
+          <Property Name="F_U_Enabled" Type="Boolean" />
+          <Property Name="F_U_Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="F_U_CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="F_U_CreatedTime" Type="DateTime" Precision="3" />
+          <Property Name="F_U_ModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="F_U_ModifiedTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="JYMESEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="T_Department" EntityType="Self.T_Department" />
+          <EntitySet Name="T_Role" EntityType="Self.T_Role" />
+          <EntitySet Name="T_User" EntityType="Self.T_User" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="JYMESModelStoreContainer" CdmEntityContainer="JYMESEntities">
+          <EntitySetMapping Name="T_Department">
+            <EntityTypeMapping TypeName="JYMESModel.T_Department">
+              <MappingFragment StoreEntitySet="T_Department">
+                <ScalarProperty Name="F_D_Bm" ColumnName="F_D_Bm" />
+                <ScalarProperty Name="F_D_Name" ColumnName="F_D_Name" />
+                <ScalarProperty Name="F_D_Parent" ColumnName="F_D_Parent" />
+                <ScalarProperty Name="F_D_Description" ColumnName="F_D_Description" />
+                <ScalarProperty Name="F_D_Enabled" ColumnName="F_D_Enabled" />
+                <ScalarProperty Name="F_D_CreatedBy" ColumnName="F_D_CreatedBy" />
+                <ScalarProperty Name="F_D_CreatedTime" ColumnName="F_D_CreatedTime" />
+                <ScalarProperty Name="F_D_ModifiedBy" ColumnName="F_D_ModifiedBy" />
+                <ScalarProperty Name="F_D_ModifiedTime" ColumnName="F_D_ModifiedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Role">
+            <EntityTypeMapping TypeName="JYMESModel.T_Role">
+              <MappingFragment StoreEntitySet="T_Role">
+                <ScalarProperty Name="F_R_Bm" ColumnName="F_R_Bm" />
+                <ScalarProperty Name="F_R_Name" ColumnName="F_R_Name" />
+                <ScalarProperty Name="F_D_Bm" ColumnName="F_D_Bm" />
+                <ScalarProperty Name="F_R_Description" ColumnName="F_R_Description" />
+                <ScalarProperty Name="F_R_CreatedBy" ColumnName="F_R_CreatedBy" />
+                <ScalarProperty Name="F_R_CreatedTime" ColumnName="F_R_CreatedTime" />
+                <ScalarProperty Name="F_R_ModifiedBy" ColumnName="F_R_ModifiedBy" />
+                <ScalarProperty Name="F_R_ModifiedTime" ColumnName="F_R_ModifiedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_User">
+            <EntityTypeMapping TypeName="JYMESModel.T_User">
+              <MappingFragment StoreEntitySet="T_User">
+                <ScalarProperty Name="F_U_Bm" ColumnName="F_U_Bm" />
+                <ScalarProperty Name="F_U_Name" ColumnName="F_U_Name" />
+                <ScalarProperty Name="F_U_Short" ColumnName="F_U_Short" />
+                <ScalarProperty Name="F_D_Bm" ColumnName="F_D_Bm" />
+                <ScalarProperty Name="F_U_Sex" ColumnName="F_U_Sex" />
+                <ScalarProperty Name="F_U_Birthday" ColumnName="F_U_Birthday" />
+                <ScalarProperty Name="F_U_Education" ColumnName="F_U_Education" />
+                <ScalarProperty Name="F_U_Role" ColumnName="F_U_Role" />
+                <ScalarProperty Name="F_U_Type" ColumnName="F_U_Type" />
+                <ScalarProperty Name="F_U_Intime" ColumnName="F_U_Intime" />
+                <ScalarProperty Name="F_U_Outtime" ColumnName="F_U_Outtime" />
+                <ScalarProperty Name="F_U_Enabled" ColumnName="F_U_Enabled" />
+                <ScalarProperty Name="F_U_Password" ColumnName="F_U_Password" />
+                <ScalarProperty Name="F_U_CreatedBy" ColumnName="F_U_CreatedBy" />
+                <ScalarProperty Name="F_U_CreatedTime" ColumnName="F_U_CreatedTime" />
+                <ScalarProperty Name="F_U_ModifiedBy" ColumnName="F_U_ModifiedBy" />
+                <ScalarProperty Name="F_U_ModifiedTime" ColumnName="F_U_ModifiedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
